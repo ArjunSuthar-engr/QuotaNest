@@ -20,12 +20,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function applyTheme(mode) {
         document.body.classList.toggle('dark-mode', mode === 'dark');
-        localStorage.setItem('ui_theme', mode);
     }
 
     function toggleTheme() {
         const next = document.body.classList.contains('dark-mode') ? 'light' : 'dark';
         applyTheme(next);
+        localStorage.setItem('theme_preference', next);
     }
 
     function isFullBrandTextSelected() {
@@ -80,7 +80,19 @@ document.addEventListener('DOMContentLoaded', () => {
         return normalized;
     });
 
-    applyTheme(localStorage.getItem('ui_theme') === 'dark' ? 'dark' : 'light');
+    const savedTheme = localStorage.getItem('theme_preference');
+    if (savedTheme) {
+        applyTheme(savedTheme);
+    } else {
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        applyTheme(prefersDark ? 'dark' : 'light');
+    }
+
+    window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+        if (!localStorage.getItem('theme_preference')) {
+            applyTheme(e.matches ? 'dark' : 'light');
+        }
+    });
     document.addEventListener('mouseup', () => {
         if (!isFullBrandTextSelected()) return;
         toggleTheme();
