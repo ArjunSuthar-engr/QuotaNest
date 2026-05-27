@@ -1,0 +1,330 @@
+:root {
+    --bg-color: #ffffff;
+    --text-primary: #000000;
+    --text-secondary: #333333;
+    --border-color: #000000;
+    --panel-bg: #ffffff;
+    --accent-bg: #000000;
+    --accent-text: #ffffff;
+    --hover-shadow: #000000;
+    --brand-color: #2f3e46;
+    --note-bg: #ffffff;
+}
+
+body.dark-mode {
+    --bg-color: #0f1318;
+    --text-primary: #e9edf2;
+    --text-secondary: #98a4b3;
+    --border-color: #334150;
+    --panel-bg: #171e26;
+    --accent-bg: #8fb8ff;
+    --accent-text: #0f1318;
+    --hover-shadow: #253244;
+    --brand-color: #b9d2ff;
+    --note-bg: #1e2731;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    min-height: 100vh;
+    padding: 2rem;
+    transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.site-header {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+}
+
+.brand-logo {
+    display: block;
+    flex-shrink: 0;
+    width: 112px;
+    height: 112px;
+    object-fit: cover;
+    object-position: center 42%;
+}
+
+body.dark-mode .brand-logo {
+    filter: invert(1) grayscale(1) contrast(1.15);
+}
+
+.brand-name {
+    font-family: 'Nunito', 'Inter', sans-serif;
+    font-size: 2.75rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    line-height: 1;
+    color: var(--brand-color);
+    user-select: text;
+    cursor: text;
+}
+
+.glass-panel {
+    border: 2px solid var(--border-color);
+    padding: 2rem;
+    margin-bottom: 3rem;
+    background-color: var(--panel-bg);
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.5rem;
+}
+
+/* Form Styles */
+.form-section {
+    margin-bottom: 3rem;
+}
+
+form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+input, select {
+    background: transparent;
+    border: 2px solid var(--border-color);
+    padding: 0.75rem 1rem;
+    color: var(--text-primary);
+    font-size: 1rem;
+    transition: all 0.2s ease;
+}
+
+input:focus, select:focus {
+    outline: none;
+    box-shadow: 4px 4px 0px var(--hover-shadow);
+    transform: translate(-2px, -2px);
+}
+
+.btn-primary {
+    grid-column: 1 / -1;
+    background: var(--accent-bg);
+    border: 2px solid var(--accent-bg);
+    padding: 1rem;
+    color: var(--accent-text);
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+    background: transparent;
+    color: var(--text-primary);
+    border-color: var(--border-color);
+    box-shadow: 4px 4px 0px var(--hover-shadow);
+    transform: translate(-2px, -2px);
+}
+
+/* Dashboard Grid */
+.accounts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.account-card {
+    border: 2px solid var(--border-color);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background: var(--panel-bg);
+    transition: all 0.2s ease;
+}
+
+.account-card:hover {
+    box-shadow: 6px 6px 0px var(--hover-shadow);
+    transform: translate(-3px, -3px);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+}
+
+.platform-badge {
+    border: 2px solid var(--border-color);
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    background: var(--panel-bg);
+}
+
+.card-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.875rem;
+}
+
+.timer-section {
+    margin-top: auto;
+    border-top: 2px dashed var(--border-color);
+    padding-top: 1rem;
+    text-align: center;
+}
+
+.note-section {
+    margin-top: auto;
+    border-top: 2px dashed var(--border-color);
+    padding-top: 1rem;
+}
+
+.note-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+    font-weight: 800;
+    text-align: left;
+}
+
+.note-text {
+    border: 2px solid var(--border-color);
+    padding: 0.9rem 1rem;
+    font-size: 0.9rem;
+    line-height: 1.35;
+    color: var(--text-primary);
+    background: var(--note-bg);
+    min-height: 3.1rem;
+}
+
+.note-empty {
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+.timer-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.timer-display {
+    font-size: 1.5rem;
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+    color: var(--text-primary);
+}
+
+/* Progress Bar */
+.progress-container {
+    width: 100%;
+    height: 12px;
+    border: 2px solid var(--border-color);
+    margin-top: 1rem;
+    position: relative;
+    background: var(--note-bg);
+}
+
+.progress-bar {
+    height: 100%;
+    background: var(--accent-bg);
+    width: 0%;
+    transition: width 1s linear;
+}
+
+.btn-ack {
+    margin-top: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border: 2px solid var(--border-color);
+    background: var(--panel-bg);
+    color: var(--text-primary);
+    padding: 0.6rem 0.9rem;
+    font-weight: 800;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-ack:hover {
+    box-shadow: 4px 4px 0px var(--hover-shadow);
+    transform: translate(-2px, -2px);
+}
+
+.btn-ack:active {
+    transform: translate(0, 0);
+    box-shadow: none;
+}
+
+.btn-delete, .btn-edit {
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+}
+
+.btn-delete:hover, .btn-edit:hover {
+    transform: scale(1.2);
+}
+
+@media (max-width: 768px) {
+    form {
+        grid-template-columns: 1fr;
+    }
+}

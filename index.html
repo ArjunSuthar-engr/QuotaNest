@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuotaNest</title>
+    <link rel="icon" href="logo-transparent.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Nunito:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="site-header">
+            <div class="brand">
+                <img src="logo-transparent.png" alt="" class="brand-logo" width="112" height="112">
+                <h1 class="brand-name">QuotaNest</h1>
+            </div>
+        </header>
+
+        <main>
+            <!-- Accounts Grid -->
+            <section class="dashboard" style="margin-bottom: 3rem;">
+                <h2>Active Trackers</h2>
+                <div id="accounts-grid" class="accounts-grid">
+                    <!-- Cards will be injected here by JS -->
+                </div>
+            </section>
+
+            <!-- Add Account Form -->
+            <section class="glass-panel form-section">
+                <h2>Add New Account</h2>
+                <form id="add-account-form">
+                    <div class="form-group">
+                        <label for="acc-name">Account Name / ID</label>
+                        <input type="text" id="acc-name" required placeholder="e.g. Codex Main">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="acc-platform">Platform</label>
+                        <select id="acc-platform" required>
+                            <option value="Codex">Codex</option>
+                            <option value="Gemini">Gemini</option>
+                            <option value="ChatGPT">ChatGPT</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="acc-email">Email Associated</label>
+                        <input type="email" id="acc-email" placeholder="example@email.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="acc-phone">Phone Number</label>
+                        <input type="text" id="acc-phone" placeholder="+1 234 567 8900">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="acc-cycle">Reset Cycle</label>
+                        <select id="acc-cycle" required>
+                            <option value="5">5 hours</option>
+                            <option value="24">24 hours</option>
+                            <option value="168" selected>7 days</option>
+                            <option value="720">30 days</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group full-width" style="display: flex; flex-direction: row; gap: 1rem; align-items: center; margin-bottom: 0.25rem;">
+                        <label style="margin: 0; display: flex; align-items: center; gap: 0.5rem; text-transform: none; font-weight: 700;">
+                            <input type="checkbox" id="acc-track-timer" checked style="width: auto; padding: 0;"> Track timer
+                        </label>
+                        <span style="color: var(--text-secondary); font-size: 0.9rem;">(turn off for reference-only)</span>
+                    </div>
+
+                    <div class="form-group full-width" id="acc-note-group" style="display: none;">
+                        <label for="acc-note">Optional Note</label>
+                        <input type="text" id="acc-note" placeholder="e.g. Login via VPN, shared with team, billing on 1st...">
+                    </div>
+
+                    <div class="form-group full-width" style="display: flex; flex-direction: row; gap: 1rem; align-items: center; margin-bottom: 0.5rem;">
+                        <label style="margin: 0; display: flex; align-items: center; gap: 0.5rem; text-transform: none; font-weight: 600;">
+                            <input type="radio" name="acc-date-type" value="last" checked style="width: auto; padding: 0;"> Last Reset Date
+                        </label>
+                        <label style="margin: 0; display: flex; align-items: center; gap: 0.5rem; text-transform: none; font-weight: 600;">
+                            <input type="radio" name="acc-date-type" value="next" style="width: auto; padding: 0;"> Next Reset Date
+                        </label>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="acc-reset">Date & Time</label>
+                        <input type="datetime-local" id="acc-reset" required>
+                    </div>
+
+                    <button type="submit" class="btn-primary">Save Account</button>
+                </form>
+            </section>
+        </main>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
